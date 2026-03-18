@@ -30,7 +30,6 @@
             padding: 2rem;
         }
         
-        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -50,7 +49,6 @@
             font-size: 0.9rem;
         }
         
-        /* Hero */
         .hero {
             text-align: center;
             padding: 4rem 0;
@@ -72,7 +70,6 @@
             margin: 0 auto 2rem;
         }
         
-        /* Products Grid */
         .section-title {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
@@ -92,6 +89,9 @@
             border-radius: 16px;
             padding: 1.5rem;
             transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
         }
         .product-card:hover {
             transform: translateY(-4px);
@@ -105,6 +105,7 @@
         .product-card h3 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            color: var(--light);
         }
         .product-card p {
             color: #94a3b8;
@@ -118,20 +119,29 @@
             font-size: 0.75rem;
             font-weight: 600;
         }
-        .status-coming {
-            background: rgba(99, 102, 241, 0.2);
-            color: #818cf8;
-        }
-        .status-beta {
-            background: rgba(245, 158, 11, 0.2);
-            color: #fbbf24;
-        }
         .status-live {
             background: rgba(34, 197, 94, 0.2);
             color: #4ade80;
         }
+        .status-coming {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+        }
         
-        /* About */
+        .highlight {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(244, 114, 182, 0.1));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .highlight h2 {
+            margin-bottom: 1rem;
+        }
+        .highlight p {
+            color: #94a3b8;
+        }
+        
         .about {
             background: rgba(255,255,255,0.03);
             border-radius: 16px;
@@ -159,31 +169,6 @@
             color: #a5b4fc;
         }
         
-        /* Contact */
-        .contact {
-            text-align: center;
-            padding: 3rem 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .contact p {
-            color: #94a3b8;
-            margin-bottom: 1.5rem;
-        }
-        .email {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-        .email:hover {
-            transform: scale(1.05);
-        }
-        
-        /* Footer */
         footer {
             text-align: center;
             padding: 2rem 0;
@@ -209,49 +194,53 @@
             <p>探索 AI 的无限可能，打造提升效率的智能工具与解决方案</p>
         </section>
         
-        <h2 class="section-title">🚀 产品矩阵</h2>
+        <div class="highlight">
+            <h2>🚀 产品矩阵</h2>
+            <p>所有产品均为全自动化运行，7×24小时服务</p>
+        </div>
+        
         <div class="products">
-            <div class="product-card">
+            <a href="https://resume-builder-craft.vercel.app" target="_blank" class="product-card">
                 <div class="product-icon">📝</div>
                 <h3>简历神器</h3>
                 <p>AI 辅助简历优化，自动匹配岗位关键词，生成面试官眼前一亮的内容</p>
-                <span class="product-status status-coming">即将上线</span>
-            </div>
+                <span class="product-status status-live">🔥 免费使用</span>
+            </a>
             
-            <div class="product-card">
+            <a href="#" class="product-card">
                 <div class="product-icon">📊</div>
                 <h3>周报生成器</h3>
                 <p>输入工作要点，AI 自动生成结构化周报，支持多种风格</p>
-                <span class="product-status status-coming">规划中</span>
-            </div>
+                <span class="product-status status-coming">即将上线</span>
+            </a>
             
-            <div class="product-card">
+            <a href="#" class="product-card">
                 <div class="product-icon">💬</div>
                 <h3>Prompt 商店</h3>
                 <p>精选高效 Prompts，涵盖写作、编程、学习等场景，即取即用</p>
                 <span class="product-status status-coming">规划中</span>
-            </div>
+            </a>
             
-            <div class="product-card">
+            <a href="#" class="product-card">
                 <div class="product-icon">🔗</div>
                 <h3>自动化工作流</h3>
                 <p>定制 AI 自动化方案，数据处理、内容生成、任务编排</p>
-                <span class="product-status status-beta">可预约</span>
-            </div>
+                <span class="product-status status-coming">可预约</span>
+            </a>
             
-            <div class="product-card">
+            <a href="#" class="product-card">
                 <div class="product-icon">🎓</div>
                 <h3>AI 学习指南</h3>
                 <p>系统化的 AI/ML 学习路径，面试八股、实战项目一站式</p>
                 <span class="product-status status-coming">规划中</span>
-            </div>
+            </a>
             
-            <div class="product-card">
+            <a href="#" class="product-card">
                 <div class="product-icon">🤖</div>
                 <h3>Agent 定制</h3>
                 <p>为企业/个人定制专属 AI 助手，知识库、工具链、自动化</p>
-                <span class="product-status status-beta">可预约</span>
-            </div>
+                <span class="product-status status-coming">可预约</span>
+            </a>
         </div>
         
         <div class="about">
@@ -264,13 +253,9 @@
                 <span class="feature">🔒 数据安全</span>
                 <span class="feature">🎯 实用主义</span>
                 <span class="feature">🚀 快速迭代</span>
+                <span class="feature">💰 盈利导向</span>
             </div>
         </div>
-        
-        <section class="contact">
-            <p>有想法？需要定制服务？联系我</p>
-            <a href="mailto:meteor@041.com" class="email">📮 联系我</a>
-        </section>
         
         <footer>
             <p>© 2026 Luma's Craft · Powered by OpenClaw</p>
