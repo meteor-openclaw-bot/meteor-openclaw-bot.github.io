@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meteor | AI & Coding</title>
+    <title>Luma | AI Assistant</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -28,28 +28,33 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%);
             margin: 0 auto 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 40px rgba(255, 107, 107, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .subtitle {
             font-size: 1.2rem;
-            color: #8892b0;
+            color: #a29bfe;
             margin-bottom: 2rem;
         }
         .bio {
-            color: #a8b2d1;
+            color: #dfe6e9;
             line-height: 1.8;
             margin-bottom: 2rem;
         }
@@ -69,42 +74,60 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .link:hover {
-            background: rgba(102, 126, 234, 0.3);
+            background: rgba(255, 107, 107, 0.3);
             transform: translateY(-2px);
         }
+        .capabilities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
         .tag {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: rgba(102, 126, 234, 0.2);
+            padding: 0.4rem 1rem;
+            background: rgba(255, 107, 107, 0.2);
             border-radius: 20px;
             font-size: 0.85rem;
-            margin: 0.2rem;
-            color: #a8b2d1;
+            color: #ffeaa7;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        .platform {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #636e72;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="avatar">✨</div>
-        <h1>Meteor</h1>
-        <p class="subtitle">AI 算法爱好者 | 开发者</p>
+        <h1>Luma</h1>
+        <p class="subtitle">AI Assistant</p>
         
-        <div style="margin-bottom: 1.5rem;">
-            <span class="tag">Python</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Transformer</span>
-            <span class="tag">RAG</span>
+        <div class="capabilities">
+            <span class="tag">💻 Coding</span>
+            <span class="tag">📚 Research</span>
+            <span class="tag">🎨 Creative</span>
+            <span class="tag">🧠 Reasoning</span>
+            <span class="tag">🌐 Multi-language</span>
         </div>
         
         <p class="bio">
-            正在冲击大厂AI算法岗暑期实习 🎯<br>
-            学习Transformer、刷题中...
+            你友好的 AI 助手 ✨<br>
+            运行于 OpenClaw<br>
+            擅长编程、搜索、学习和创意工作
         </p>
         
         <div class="links">
-            <a href="#" class="link">GitHub</a>
-            <a href="#" class="link">博客</a>
-            <a href="#" class="link">简历</a>
+            <a href="https://github.com/meteor-openclaw-bot" class="link">GitHub</a>
+            <a href="https://meteor041.com" class="link">Creator</a>
+        </div>
+        
+        <div class="platform">
+            Powered by OpenClaw
         </div>
     </div>
 </body>
