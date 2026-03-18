@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简历神器 | Luma's Craft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --dark: #0f172a;
+        }
+        body {
+            background: var(--dark);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+        .input {
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            width: 100%;
+        }
+        .input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.02);
+        }
+        .resume-preview {
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 8px;
+            font-family: 'Calibri', 'Times New Roman', serif;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Header -->
+    <header class="border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold gradient-text">✨ Luma's Craft</a>
+            <a href="/" class="text-gray-400 hover:text-white">← 返回首页</a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-2">📝 简历神器</h1>
+        <p class="text-gray-400 text-center mb-8">AI 优化简历经历，让你的简历脱颖而出</p>
+
+        <!-- Tab Navigation -->
+        <div class="flex gap-4 mb-8 justify-center">
+            <button onclick="showTab('input')" class="btn" id="tab-input">📋 填写信息</button>
+            <button onclick="showTab('preview')" class="btn bg-gray-700" id="tab-preview">👁️ 预览下载</button>
+        </div>
+
+        <!-- Input Tab -->
+        <div id="content-input" class="grid md:grid-cols-2 gap-8">
+            <!-- Left Column -->
+            <div class="space-y-6">
+                <div class="card p-6">
+                    <h3 class="text-lg font-semibold mb-4 text-purple-400">基本信息</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="name" class="input" placeholder="姓名 *">
+                        <input type="text" id="email" class="input" placeholder="邮箱 *">
+                        <input type="text" id="phone" class="input" placeholder="手机">
+                        <input type="text" id="location" class="input" placeholder="所在地 (如：北京)">
+                    </div>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="text-lg font-semibold mb-4 text-purple-400">教育背景</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="university" class="input" placeholder="学校 *">
+                        <input type="text" id="degree" class="input" placeholder="学位 (如：计算机科学与技术硕士)">
+                        <input type="text" id="eduTime" class="input" placeholder="在校时间 (如：2024.09 - 2026.06)">
+                        <input type="text" id="gpa" class="input" placeholder="GPA (如：3.8/4.0)">
+                        <input type="text" id="honors" class="input" placeholder="荣誉 (如：一等奖学金)">
+                    </div>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="text-lg font-semibold mb-4 text-purple-400">联系方式</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="github" class="input" placeholder="GitHub (如：github.com/xxx)">
+                        <input type="text" id="linkedin" class="input" placeholder="LinkedIn">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-6">
+                <div class="card p-6">
+                    <h3 class="text-lg font-semibold mb-4 text-purple-400">项目经历</h3>
+                    
+                    <div class="mb-6 p-4 bg-white/5 rounded-lg">
+                        <h4 class="font-medium mb-3">项目 1</h4>
+                        <input type="text" id="p1Name" class="input mb-2" placeholder="项目名称">
+                        <input type="text" id="p1Time" class="input mb-2" placeholder="时间">
+                        <textarea id="p1Original" class="input h-20 mb-2" placeholder="原始描述（用一句话描述你做了什么）"></textarea>
+                        <button onclick="optimize('p1')" class="btn text-sm">🔮 AI 优化</button>
+                        <div id="p1Optimized" class="mt-3 p-3 bg-purple-900/30 rounded hidden">
+                            <p class="text-xs text-gray-400 mb-1">优化后：</p>
+                            <p class="text-sm" id="p1Result"></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-white/5 rounded-lg">
+                        <h4 class="font-medium mb-3">项目 2</h4>
+                        <input type="text" id="p2Name" class="input mb-2" placeholder="项目名称">
+                        <input type="text" id="p2Time" class="input mb-2" placeholder="时间">
+                        <textarea id="p2Original" class="input h-20 mb-2" placeholder="原始描述"></textarea>
+                        <button onclick="optimize('p2')" class="btn text-sm">🔮 AI 优化</button>
+                        <div id="p2Optimized" class="mt-3 p-3 bg-purple-900/30 rounded hidden">
+                            <p class="text-xs text-gray-400 mb-1">优化后：</p>
+                            <p class="text-sm" id="p2Result"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="text-lg font-semibold mb-4 text-purple-400">实习经历</h3>
+                    
+                    <div class="mb-6 p-4 bg-white/5 rounded-lg">
+                        <h4 class="font-medium mb-3">实习 1</h4>
+                        <input type="text" id="i1Company" class="input mb-2" placeholder="公司">
+                        <input type="text" id="i1Position" class="input mb-2" placeholder="岗位">
+                        <input type="text" id="i1Time" class="input mb-2" placeholder="时间">
+                        <textarea id="i1Original" class="input h-20 mb-2" placeholder="原始描述"></textarea>
+                        <button onclick="optimize('i1')" class="btn text-sm">🔮 AI 优化</button>
+                        <div id="i1Optimized" class="mt-3 p-3 bg-purple-900/30 rounded hidden">
+                            <p class="text-xs text-gray-400 mb-1">优化后：</p>
+                            <p class="text-sm" id="i1Result"></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-white/5 rounded-lg">
+                        <h4 class="font-medium mb-3">实习 2</h4>
+                        <input type="text" id="i2Company" class="input mb-2" placeholder="公司">
+                        <input type="text" id="i2Position" class="input mb-2" placeholder="岗位">
+                        <input type="text" id="i2Time" class="input mb-2" placeholder="时间">
+                        <textarea id="i2Original" class="input h-20 mb-2" placeholder="原始描述"></textarea>
+                        <button onclick="optimize('i2')" class="btn text-sm">🔮 AI 优化</button>
+                        <div id="i2Optimized" class="mt-3 p-3 bg-purple-900/30 rounded hidden">
+                            <p class="text-xs text-gray-400 mb-1">优化后：</p>
+                            <p class="text-sm" id="i2Result"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="text-lg font-semibold mb-4 text-purple-400">技能</h3>
+                    <textarea id="skills" class="input h-20" placeholder="技能列表 (如：Python, PyTorch, SQL, Git, Linux...)"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Tab -->
+        <div id="content-preview" class="hidden">
+            <div class="resume-preview" id="resumeContent">
+                <h1 style="text-align:center;font-size:22px;margin-bottom:5px;" id="prev-name">Your Name</h1>
+                <p style="text-align:center;color:#666;font-size:12px;margin-bottom:15px;" id="prev-contact">
+                    email@example.com | Phone | Location
+                </p>
+                
+                <h3 style="font-size:14px;border-bottom:1px solid #333;padding-bottom:3px;margin:15px 0 8px;">教育背景</h3>
+                <p><strong id="prev-university">University</strong></p>
+                <p style="color:#666;font-size:12px;" id="prev-degree">Degree | Time</p>
+                <p style="font-size:12px;" id="prev-edu">GPA: N/A | Honors</p>
+                
+                <h3 style="font-size:14px;border-bottom:1px solid #333;padding-bottom:3px;margin:15px 0 8px;">项目经历</h3>
+                <div id="prev-projects"></div>
+                
+                <h3 style="font-size:14px;border-bottom:1px solid #333;padding-bottom:3px;margin:15px 0 8px;">实习经历</h3>
+                <div id="prev-interns"></div>
+                
+                <h3 style="font-size:14px;border-bottom:1px solid #333;padding-bottom:3px;margin:15px 0 8px;">技能</h3>
+                <p style="font-size:12px;" id="prev-skills">Skills</p>
+            </div>
+
+            <div class="text-center mt-8">
+                <button onclick="downloadPDF()" class="btn text-lg">📥 下载 PDF</button>
+                <p class="text-gray-400 text-sm mt-2">提示：点击下载后，选择"另存为 PDF"</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-8 text-gray-500 text-sm">
+        📝 简历神器 | © 2026 Luma's Craft
+    </footer>
+
+    <script>
+        // Tab切换
+        function showTab(tab) {
+            document.getElementById('content-input').classList.toggle('hidden', tab !== 'input');
+            document.getElementById('content-preview').classList.toggle('hidden', tab !== 'preview');
+            document.getElementById('tab-input').classList.toggle('bg-gray-700', tab !== 'input');
+            document.getElementById('tab-preview').classList.toggle('bg-gray-700', tab !== 'preview');
+            if (tab === 'preview') updatePreview();
+        }
+
+        // AI 优化（模拟）
+        function optimize(type) {
+            const original = document.getElementById(type + 'Original').value;
+            if (!original.trim()) {
+                alert('请先输入内容');
+                return;
+            }
+
+            // 模拟优化结果（实际需要接入 API）
+            const templates = [
+                `负责${original}，通过优化算法提升效率30%，获得团队好评`,
+                `主导${original}项目，采用${original.includes('AI')?'深度学习':'机器学习'}技术，实现功能上线`,
+                `参与${original}，独立完成核心模块开发，累计处理数据量达100W+`,
+                `${original}，运用STAR法则重构描述，突出个人贡献与业务价值`,
+            ];
+            
+            const optimized = templates[Math.floor(Math.random() * templates.length)];
+            document.getElementById(type + 'Result').textContent = optimized;
+            document.getElementById(type + 'Optimized').classList.remove('hidden');
+        }
+
+        // 更新预览
+        function updatePreview() {
+            document.getElementById('prev-name').textContent = document.getElementById('name').value || 'Your Name';
+            
+            const contact = [
+                document.getElementById('email').value || 'email@example.com',
+                document.getElementById('phone').value || 'Phone',
+                document.getElementById('location').value || 'Location'
+            ].filter(x => x).join(' | ');
+            document.getElementById('prev-contact').textContent = contact;
+            
+            document.getElementById('prev-university').textContent = document.getElementById('university').value || 'University';
+            document.getElementById('prev-degree').textContent = 
+                (document.getElementById('degree').value || 'Degree') + ' | ' + 
+                (document.getElementById('eduTime').value || 'Time');
+            document.getElementById('prev-edu').textContent = 
+                'GPA: ' + (document.getElementById('gpa').value || 'N/A') + ' | ' + 
+                (document.getElementById('honors').value || 'Honors');
+            
+            // 项目
+            let projectsHtml = '';
+            for (let i = 1; i <= 2; i++) {
+                const name = document.getElementById('p' + i + 'Name').value;
+                const time = document.getElementById('p' + i + 'Time').value;
+                const desc = document.getElementById('p' + i + 'Result').textContent || 
+                             document.getElementById('p' + i + 'Original').value;
+                if (name) {
+                    projectsHtml += `<p><strong>${name}</strong>${time ? ' | ' + time : ''}</p><p style="font-size:12px;">${desc}</p>`;
+                }
+            }
+            document.getElementById('prev-projects').innerHTML = projectsHtml || '<p style="font-size:12px;color:#999;">暂无项目经历</p>';
+            
+            // 实习
+            let internsHtml = '';
+            for (let i = 1; i <= 2; i++) {
+                const company = document.getElementById('i' + i + 'Company').value;
+                const position = document.getElementById('i' + i + 'Position').value;
+                const time = document.getElementById('i' + i + 'Time').value;
+                const desc = document.getElementById('i' + i + 'Result').textContent || 
+                             document.getElementById('i' + i + 'Original').value;
+                if (company) {
+                    internsHtml += `<p><strong>${company}</strong> - ${position}</p><p style="color:#666;font-size:12px;">${time}</p><p style="font-size:12px;">${desc}</p>`;
+                }
+            }
+            document.getElementById('prev-interns').innerHTML = internsHtml || '<p style="font-size:12px;color:#999;">暂无实习经历</p>';
+            
+            document.getElementById('prev-skills').textContent = document.getElementById('skills').value || 'Skills';
+        }
+
+        // 下载PDF
+        function downloadPDF() {
+            const content = document.getElementById('resumeContent');
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>简历</title>
+                    <style>
+                        body { font-family: 'Calibri', 'Times New Roman', serif; margin: 40px; }
+                        @media print { body { margin: 0; } }
+                    </style>
+                </head>
+                <body>${content.innerHTML}</body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>
