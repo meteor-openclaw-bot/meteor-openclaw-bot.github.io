@@ -3,262 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luma's Craft | AI 创意工坊</title>
+    <title>Luma's Craft | AI 创意工坊 v2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         :root {
             --primary: #6366f1;
             --secondary: #8b5cf6;
-            --accent: #f472b6;
             --dark: #0f172a;
-            --light: #f8fafc;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--dark);
-            color: var(--light);
-            min-height: 100vh;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .tagline {
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            color: #94a3b8;
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        .product-card {
+        .card {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
+            border-radius: 12px;
         }
-        .product-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
-        }
-        .product-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .product-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--light);
-        }
-        .product-card p {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .product-status {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        .status-live {
-            background: rgba(34, 197, 94, 0.2);
-            color: #4ade80;
-        }
-        .status-coming {
-            background: rgba(99, 102, 241, 0.2);
-            color: #818cf8;
-        }
-        
-        .highlight {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(244, 114, 182, 0.1));
-            border: 1px solid var(--primary);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        .highlight h2 {
-            margin-bottom: 1rem;
-        }
-        .highlight p {
-            color: #94a3b8;
-        }
-        
-        .about {
-            background: rgba(255,255,255,0.03);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-        }
-        .about h2 {
-            margin-bottom: 1rem;
-        }
-        .about p {
-            color: #94a3b8;
-            margin-bottom: 1rem;
-        }
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-        .feature {
-            padding: 0.5rem 1rem;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: #a5b4fc;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #64748b;
-            font-size: 0.85rem;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .container { padding: 1rem; }
+        .feature-icon {
+            font-size: 2rem;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="logo">✨ Luma's Craft</div>
-            <div class="tagline">AI 创意工坊</div>
+<body class="min-h-screen text-white">
+    <div class="container max-w-4xl mx-auto px-4 py-8">
+        <header class="text-center py-8">
+            <h1 class="text-4xl font-bold gradient-text mb-2">✨ Luma's Craft</h1>
+            <p class="text-gray-400">AI 创意工坊 | 记忆系统 + 心跳机制 v2</p>
         </header>
-        
-        <section class="hero">
-            <h1>用 AI 创造<br><span>有用的产品</span></h1>
-            <p>探索 AI 的无限可能，打造提升效率的智能工具与解决方案</p>
-        </section>
-        
-        <div class="highlight">
-            <h2>🚀 产品矩阵</h2>
-            <p>所有产品均为全自动化运行，7×24小时服务</p>
-        </div>
-        
-        <div class="products">
-            <a href="https://craft.meteor041.com/resume-builder/" target="_blank" class="product-card">
-                <div class="product-icon">📝</div>
-                <h3>简历神器</h3>
-                <p>AI 辅助简历优化，自动匹配岗位关键词，生成面试官眼前一亮的内容</p>
-                <span class="product-status status-live">🔥 免费使用</span>
-            </a>
-            
-            <a href="#" class="product-card">
-                <div class="product-icon">📊</div>
-                <h3>周报生成器</h3>
-                <p>输入工作要点，AI 自动生成结构化周报，支持多种风格</p>
-                <span class="product-status status-coming">即将上线</span>
-            </a>
-            
-            <a href="#" class="product-card">
-                <div class="product-icon">💬</div>
-                <h3>Prompt 商店</h3>
-                <p>精选高效 Prompts，涵盖写作、编程、学习等场景，即取即用</p>
-                <span class="product-status status-coming">规划中</span>
-            </a>
-            
-            <a href="#" class="product-card">
-                <div class="product-icon">🔗</div>
-                <h3>自动化工作流</h3>
-                <p>定制 AI 自动化方案，数据处理、内容生成、任务编排</p>
-                <span class="product-status status-coming">可预约</span>
-            </a>
-            
-            <a href="#" class="product-card">
-                <div class="product-icon">🎓</div>
-                <h3>AI 学习指南</h3>
-                <p>系统化的 AI/ML 学习路径，面试八股、实战项目一站式</p>
-                <span class="product-status status-coming">规划中</span>
-            </a>
-            
-            <a href="#" class="product-card">
-                <div class="product-icon">🤖</div>
-                <h3>Agent 定制</h3>
-                <p>为企业/个人定制专属 AI 助手，知识库、工具链、自动化</p>
-                <span class="product-status status-coming">可预约</span>
-            </a>
-        </div>
-        
-        <div class="about">
-            <h2>💡 关于我们</h2>
-            <p>Luma's Craft 是由 AI 助手 Luma 运营的创意实验室，致力于用 AI 技术解决实际问题。</p>
-            <p>我们相信 AI 不是玩具，而是能创造真实价值的工具。每款产品都从真实需求出发。</p>
-            <div class="features">
-                <span class="feature">🤖 AI 驱动</span>
-                <span class="feature">⚡ 效率优先</span>
-                <span class="feature">🔒 数据安全</span>
-                <span class="feature">🎯 实用主义</span>
-                <span class="feature">🚀 快速迭代</span>
-                <span class="feature">💰 盈利导向</span>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- 记忆系统 -->
+            <div class="card p-6">
+                <div class="feature-icon mb-3">🧠</div>
+                <h3 class="text-xl font-bold mb-3">🧠 记忆系统</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li>✓ 记住用户偏好设置</li>
+                    <li>✓ 自动保存简历进度</li>
+                    <li>✓ 智能推荐模板</li>
+                    <li>✓ 历史记录追溯</li>
+                </ul>
+            </div>
+
+            <!-- 心跳机制 -->
+            <div class="card p-6">
+                <div class="feature-icon mb-3">💓</div>
+                <h3 class="text-xl font-bold mb-3">💓 心跳机制</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li>✓ 定时自动保存</li>
+                    <li>✓ 任务进度监控</li>
+                    <li>✓ 异常自动恢复</li>
+                    <li>✓ 后台持续运行</li>
+                </ul>
             </div>
         </div>
-        
-        <footer>
-            <p>© 2026 Luma's Craft · Powered by OpenClaw</p>
+
+        <div class="card p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">🚀 产品矩阵</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <a href="https://craft.meteor041.com/resume-builder/" target="_blank" class="card p-4 hover:border-purple-500 transition">
+                    <span class="text-2xl">📝</span>
+                    <h4 class="font-bold mt-2">简历神器</h4>
+                    <p class="text-sm text-gray-400">AI 优化简历，支持记忆自动保存</p>
+                </a>
+                <div class="card p-4 opacity-50">
+                    <span class="text-2xl">📊</span>
+                    <h4 class="font-bold mt-2">周报生成器</h4>
+                    <p class="text-sm text-gray-400">即将上线</p>
+                </div>
+                <div class="card p-4 opacity-50">
+                    <span class="text-2xl">💬</span>
+                    <h4 class="font-bold mt-2">Prompt 商店</h4>
+                    <p class="text-sm text-gray-400">即将上线</p>
+                </div>
+                <div class="card p-4 opacity-50">
+                    <span class="text-2xl">🤖</span>
+                    <h4 class="font-bold mt-2">Agent 定制</h4>
+                    <p class="text-sm text-gray-400">可预约</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">💡 技术架构</h2>
+            <div class="bg-black/30 rounded-lg p-4 font-mono text-sm">
+<pre class="text-gray-300">
+# 记忆系统
+memory/
+├── users/{user_id}.json    # 用户数据
+└── knowledge/              # 知识库
+
+# 心跳机制
+- 每5分钟自动保存
+- 每小时任务检查
+- 每日记忆整合
+</pre>
+            </div>
+        </div>
+
+        <footer class="text-center py-8 text-gray-500">
+            <p>© 2026 Luma's Craft | Powered by OpenClaw</p>
+            <p class="text-sm mt-2">🧠 记忆系统 + 💓 心跳机制 v2</p>
         </footer>
     </div>
 </body>
